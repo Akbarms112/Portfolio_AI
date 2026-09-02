@@ -1,0 +1,155 @@
+.about {
+  padding: 6rem 1.5rem;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.5rem;
+}
+
+.text strong {
+  color: var(--white);
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.socialLink {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.socialLink :global(svg) {
+  width: 18px;
+  height: 18px;
+}
+
+.socialLink:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.1);
+}
+
+.exp {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
+.expLabel {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  color: var(--accent3);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.expItem {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  align-items: center;
+}
+
+.expYear {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.45);
+  width: 135px;
+  flex-shrink: 0;
+}
+
+.expRole {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.expCo {
+  color: var(--accent3);
+  font-weight: 400;
+}
+
+/* Portrait Image Container - ALWAYS VISIBLE WITH EXPLICIT ASPECT RATIO */
+.right {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.portraitWrap {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  min-height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.portrait {
+  filter: grayscale(100%) contrast(1.15) brightness(0.95);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.portraitWrap:hover .portrait {
+  filter: grayscale(0%) contrast(1.05) brightness(1);
+  transform: scale(1.03);
+}
+
+.portraitOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 6, 8, 0.7) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+@media (max-width: 920px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .expItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  .expYear {
+    width: auto;
+  }
+  .portraitWrap {
+    max-width: 100%;
+    min-height: 360px;
+  }
+}
