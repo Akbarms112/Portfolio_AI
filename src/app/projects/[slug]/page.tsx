@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import { getAssetPath } from "@/utils/basePath";
+import CustomCursor from "@/components/ui/CustomCursor";
+import GrainOverlay from "@/components/ui/GrainOverlay";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -29,6 +31,9 @@ export default async function ProjectPage({
 
   return (
     <div className={styles.pageWrap}>
+      <GrainOverlay />
+      <CustomCursor />
+
       {/* Top Header Bar */}
       <header className={styles.headerBar}>
         <Link href="/#works" className={styles.backBtn}>

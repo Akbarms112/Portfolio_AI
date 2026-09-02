@@ -1,0 +1,274 @@
+.experience {
+  padding: 7rem 1.5rem 8rem;
+  background: var(--bg2);
+  position: relative;
+  overflow: hidden;
+}
+
+.particleBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image: radial-gradient(circle 2px at 30px 30px, rgba(255, 255, 255, 0.4) 100%, transparent 0%);
+  background-size: 60px 60px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.totalExpBadge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--accent3);
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  padding: 0.45rem 1.2rem;
+  border-radius: 100px;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 580px;
+  margin: 1rem auto 0;
+  line-height: 1.7;
+}
+
+/* Timeline Container */
+.timelineWrap {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Central Vertical Spine Line */
+.timelineSpine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    var(--accent) 0%,
+    var(--accent3) 50%,
+    var(--accent2) 100%
+  );
+  transform: translateX(-50%);
+  z-index: 1;
+  box-shadow: 0 0 15px rgba(108, 99, 255, 0.5);
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.timelineRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.rowLeft {
+  justify-content: flex-start;
+}
+
+.rowRight {
+  justify-content: flex-end;
+}
+
+/* Connecting Node Dot */
+.nodeDot {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 3px solid var(--accent3);
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  box-shadow: 0 0 16px var(--accent3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nodeInner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  animation: pulseNode 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseNode {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 1; }
+}
+
+/* Timeline Card */
+.card {
+  position: relative;
+  width: calc(50% - 3.5rem);
+  padding: 2.2rem 2rem;
+  background: rgba(16, 16, 26, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 25px rgba(108, 99, 255, 0.2);
+}
+
+.currentCard {
+  border-color: rgba(74, 222, 128, 0.4);
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.15);
+}
+
+/* Current Green Badge */
+.currentBadge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #060608;
+  background: #4ade80;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+}
+
+.roleTitle {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.companyMeta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  margin-bottom: 1.2rem;
+}
+
+.companyName {
+  color: var(--accent3);
+  font-weight: 700;
+}
+
+.periodText {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tagline {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* Bullet List with Checkmarks */
+.bulletList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.8rem;
+}
+
+.bulletItem {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.checkIcon {
+  color: var(--accent3);
+  font-weight: bold;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* Skill Badges */
+.skillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.skillPill {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.skillPill:hover {
+  background: rgba(0, 212, 255, 0.12);
+  border-color: var(--accent3);
+  color: #ffffff;
+}
+
+@media (max-width: 860px) {
+  .timelineSpine {
+    left: 20px;
+    transform: none;
+  }
+  .nodeDot {
+    left: 20px;
+    transform: translate(-50%, -50%);
+  }
+  .timelineRow {
+    justify-content: flex-start;
+    padding-left: 3rem;
+  }
+  .card {
+    width: 100%;
+    padding: 1.8rem 1.4rem;
+  }
+  .currentBadge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+}

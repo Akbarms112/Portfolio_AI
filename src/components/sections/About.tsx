@@ -9,7 +9,7 @@ const svgLI = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-
 
 const exp = [
   { period: "Nov 2025 — Present", role: "Junior Consultant – AI Engineer", company: "@ Smilodata (Hosur)" },
-  { period: "Jul 2025 — Oct 2025", role: "Front-End Developer (Freelance)", company: "@ Smilodata (Remote)" },
+  { period: "Jul 2025 — Oct 2025", role: "Intern – Software Engineer", company: "@ Smilodata (Remote)" },
   { period: "2021 — 2025", role: "B.Tech in Information Technology", company: "@ RP Sarathy Institute of Tech (CGPA 8.01)" },
 ];
 
