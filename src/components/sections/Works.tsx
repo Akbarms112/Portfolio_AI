@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { projects } from "@/data/projects";
+import { getAssetPath } from "@/utils/basePath";
 import styles from "./Works.module.css";
 
 export default function Works() {
@@ -67,7 +68,7 @@ export default function Works() {
               >
                 <span className={styles.thumbNum}>{proj.num}.</span>
                 <span className={styles.thumbImgWrap}>
-                  <Image src={proj.img} alt={proj.title} fill style={{ objectFit: "cover" }} />
+                  <Image src={getAssetPath(proj.img)} alt={proj.title} fill style={{ objectFit: "cover" }} />
                 </span>
                 <span className={styles.thumbTitle}>{proj.title}</span>
                 {isActive && <span className={styles.activeIndicator}>›</span>}
@@ -110,7 +111,7 @@ export default function Works() {
               {/* Card Image */}
               <div className={styles.cardImgContainer}>
                 <Image
-                  src={p.img}
+                  src={getAssetPath(p.img)}
                   alt={p.title}
                   fill
                   style={{ objectFit: "cover" }}
