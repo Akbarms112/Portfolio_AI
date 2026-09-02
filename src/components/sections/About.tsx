@@ -49,7 +49,13 @@ export default function About() {
         </div>
         <div className={`${styles.right} reveal-right delay-200`}>
           <div className={styles.portraitWrap}>
-            <Image src={getAssetPath("/portrait.jpg")} alt="Akbar Ali - AI Engineer" fill className={styles.portrait} style={{ objectFit: "cover" }} />
+            <Image
+              src={getAssetPath("/portrait.jpg")}
+              alt="Akbar Ali - AI Engineer"
+              fill
+              className={styles.portrait}
+              style={{ objectFit: "cover", objectPosition: "top center" }}
+            />
             <div className={styles.portraitOverlay} />
           </div>
         </div>

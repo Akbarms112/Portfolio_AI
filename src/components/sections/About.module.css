@@ -99,7 +99,7 @@
   font-weight: 400;
 }
 
-/* Portrait Image Container - ALWAYS VISIBLE WITH EXPLICIT ASPECT RATIO */
+/* Portrait Image Container - TOP CENTER POSITION FOR FULL HEAD VISIBILITY */
 .right {
   width: 100%;
   display: flex;
@@ -110,8 +110,8 @@
   position: relative;
   width: 100%;
   max-width: 420px;
-  aspect-ratio: 4 / 5;
-  min-height: 420px;
+  aspect-ratio: 9 / 14;
+  min-height: 480px;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -119,6 +119,7 @@
 }
 
 .portrait {
+  object-position: top center !important;
   filter: grayscale(100%) contrast(1.15) brightness(0.95);
   transition: filter 0.5s ease, transform 0.5s ease;
 }
@@ -150,6 +151,6 @@
   }
   .portraitWrap {
     max-width: 100%;
-    min-height: 360px;
+    min-height: 420px;
   }
 }
