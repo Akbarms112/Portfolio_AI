@@ -1,13 +1,19 @@
+const BASE_PATH = "/Portfolio_AI";
+
 export const getAssetPath = (path: string) => {
   if (!path) return "";
   if (path.startsWith("http")) return path;
-  
-  // Next.js automatically prepends basePath from next.config.ts in production
-  const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  
-  // Only add prefix if explicitly running in GitHub Actions build without Next.js Image handling
-  const isGitHubActions = typeof window !== "undefined" && window.location.hostname.includes("github.io");
-  const prefix = isGitHubActions ? "/Portfolio_AI" : "";
 
-  return `${prefix}${cleanPath}`;
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+
+  if (cleanPath.startsWith(BASE_PATH)) {
+    return cleanPath;
+  }
+
+  // In production build or GitHub Pages deployment
+  if (process.env.NODE_ENV === "production" || (typeof window !== "undefined" && window.location.hostname.includes("github.io"))) {
+    return `${BASE_PATH}${cleanPath}`;
+  }
+
+  return cleanPath;
 };
