@@ -22,6 +22,7 @@
   font-family: 'Cinzel Decorative', 'Bodoni Moda', 'Cinzel', serif;
   font-size: 1.2rem;
   font-weight: 700;
+  color: var(--white);
 }
 
 .dot {
@@ -31,13 +32,15 @@
 .copy {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--white-60);
+  font-weight: 600;
 }
 
 .location {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--white-60);
+  font-weight: 600;
 }
 
 @media (max-width: 640px) {

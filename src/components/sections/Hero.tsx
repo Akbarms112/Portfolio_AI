@@ -5,8 +5,6 @@ import { getAssetPath } from "@/utils/basePath";
 import styles from "./Hero.module.css";
 
 const WORDS_DEFAULT = ["VOICE AI", "RAG AGENTS", "LLM PIPELINES", "GEN AI PLATFORMS", "FASTAPI APIs"];
-const WORDS_HOVER = ["OUT OF LIMITS", "BEYOND BOUNDARIES", "NEXT-GEN REASONING", "ULTRA LOW LATENCY"];
-const CHARS = "01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*<>/\\|{}[]";
 
 const socials = [
   {
@@ -15,7 +13,7 @@ const socials = [
   },
   {
     label: "GitHub", href: "https://github.com/Akbarms112", target: "_blank",
-    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>`,
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>`,
   },
   {
     label: "LinkedIn", href: "https://www.linkedin.com/in/akbar-ali-053615225/", target: "_blank",
@@ -30,10 +28,6 @@ export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const dropsRef = useRef<number[]>([]);
-  const rafRef = useRef<number>(0);
-
-  const activeWords = isHovered ? WORDS_HOVER : WORDS_DEFAULT;
 
   /* Mouse move tracking inside Hero section */
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
@@ -48,46 +42,122 @@ export default function Hero() {
     const id = setInterval(() => {
       setWordVisible(false);
       setTimeout(() => {
-        setWordIdx((i) => (i + 1) % activeWords.length);
+        setWordIdx((i) => (i + 1) % WORDS_DEFAULT.length);
         setWordVisible(true);
       }, 350);
     }, 2600);
     return () => clearInterval(id);
-  }, [activeWords]);
+  }, []);
 
-  /* Canvas matrix rendering */
+  /* Permanent AI Neural Core & Voice Audio Spectrum Canvas Animation */
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d")!;
 
+    let animationFrameId: number;
+
+    // Neural network nodes
+    const nodes = Array.from({ length: 16 }, () => ({
+      x: Math.random() * 580,
+      y: Math.random() * 72,
+      vx: (Math.random() - 0.5) * 1.2,
+      vy: (Math.random() - 0.5) * 0.8,
+      radius: Math.random() * 2 + 1.2,
+    }));
+
+    // Matrix drops
+    const cols = 40;
+    const drops = Array(cols).fill(1);
+    const chars = "01AKBARAIPYTHONVOICELLMRAGQDRANT";
+
+    let phase = 0;
+
     const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      const cols = Math.floor(canvas.width / 12);
-      dropsRef.current = Array(cols).fill(1);
+      canvas.width = canvas.offsetWidth || 580;
+      canvas.height = canvas.offsetHeight || 72;
     };
     resize();
     window.addEventListener("resize", resize);
 
-    const draw = () => {
-      ctx.fillStyle = "rgba(8,8,14,0.18)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.font = "10px 'Space Mono', monospace";
-      dropsRef.current.forEach((y, i) => {
-        const char = CHARS[Math.floor(Math.random() * CHARS.length)];
-        const alpha = Math.random() * 0.55 + 0.1;
-        const isCyan = Math.random() > 0.82;
-        ctx.fillStyle = isCyan ? `rgba(0,212,255,${alpha})` : `rgba(${Math.floor(alpha*70)},${Math.floor(alpha*120)},${Math.floor(alpha*220)},${alpha})`;
-        ctx.fillText(char, i * 12, y * 12);
-        if (y * 12 > canvas.height && Math.random() > 0.975) dropsRef.current[i] = 0;
-        dropsRef.current[i]++;
-      });
-      rafRef.current = requestAnimationFrame(draw);
-    };
-    draw();
+    const render = () => {
+      phase += 0.06;
 
-    return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(rafRef.current); };
+      // Dark clearing
+      ctx.fillStyle = "rgba(6, 6, 12, 0.28)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // 1. Matrix code stream background
+      ctx.font = "9px 'Space Mono', monospace";
+      drops.forEach((y, i) => {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const alpha = Math.random() * 0.28 + 0.08;
+        ctx.fillStyle = i % 3 === 0 ? `rgba(0, 212, 255, ${alpha})` : `rgba(108, 99, 255, ${alpha})`;
+        ctx.fillText(char, i * 14, y * 10);
+        if (y * 10 > h && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      });
+
+      // 2. Real-Time AI Voice Audio Frequency Spectrum Bars (Center)
+      const barCount = 30;
+      const barWidth = 3;
+      const barGap = 4;
+      const startX = (w - (barCount * (barWidth + barGap))) / 2;
+
+      for (let i = 0; i < barCount; i++) {
+        const wave = Math.sin(phase + i * 0.28) * 0.5 + 0.5;
+        const noise = Math.random() * 0.25;
+        const barHeight = (wave + noise) * (h * 0.62);
+
+        const x = startX + i * (barWidth + barGap);
+        const y = (h - barHeight) / 2;
+
+        const isCenter = Math.abs(i - barCount / 2) < 5;
+        ctx.fillStyle = isCenter
+          ? `rgba(255, 107, 107, ${0.7 + wave * 0.3})`
+          : `rgba(0, 212, 255, ${0.5 + wave * 0.5})`;
+
+        ctx.fillRect(x, y, barWidth, barHeight);
+      }
+
+      // 3. Neural Constellation Network
+      nodes.forEach((n, i) => {
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.fillStyle = i % 2 === 0 ? "rgba(0, 212, 255, 0.85)" : "rgba(108, 99, 255, 0.85)";
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const n2 = nodes[j];
+          const dist = Math.hypot(n.x - n2.x, n.y - n2.y);
+          if (dist < 70) {
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(n2.x, n2.y);
+            ctx.strokeStyle = `rgba(0, 212, 255, ${0.35 * (1 - dist / 70)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      });
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   const topItems = ["AI ENGINEER", "·", "PYTHON DEVELOPER", "·", "GENERATIVE AI", "·", "VOICE AI SPECIALIST", "·", "AI ENGINEER", "·", "PYTHON DEVELOPER", "·", "GENERATIVE AI", "·", "VOICE AI SPECIALIST", "·"];
@@ -101,11 +171,11 @@ export default function Hero() {
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
     >
-      {/* Dynamic Synthwave Hover Background */}
+      {/* Updated Background Wallpaper: wall.jpg */}
       <div className={styles.synthwaveBgWrap}>
         <Image
-          src={getAssetPath("/hero_bg_synthwave.jpg")}
-          alt="Cyberpunk Synthwave Backdrop"
+          src={getAssetPath("/wall.jpg")}
+          alt="AI Developer Wallpaper Backdrop"
           fill
           priority
           style={{ objectFit: "cover" }}
@@ -114,7 +184,7 @@ export default function Hero() {
         <div
           className={styles.spotlightOverlay}
           style={{
-            background: `radial-gradient(circle 500px at ${mousePos.x}% ${mousePos.y}%, rgba(108, 99, 255, 0.25) 0%, rgba(0, 0, 0, 0.85) 75%)`,
+            background: `radial-gradient(circle 550px at ${mousePos.x}% ${mousePos.y}%, rgba(108, 99, 255, 0.28) 0%, rgba(0, 0, 0, 0.82) 75%)`,
           }}
         />
       </div>
@@ -134,10 +204,10 @@ export default function Hero() {
           {/* line 1 */}
           <div className={`${styles.line} reveal-blur delay-100`}>
             <span className={styles.outline}>BUILDING</span>
-            <span className={styles.solid}>{isHovered ? "CREATIVITY" : "INTELLIGENT"}</span>
+            <span className={styles.solid}>INTELLIGENT</span>
           </div>
 
-          {/* scanner frame */}
+          {/* AI Neural Core & Voice Audio Spectrum Visualizer */}
           <div className={`${styles.frame} ${isHovered ? styles.frameActive : ""} reveal-scale delay-200`}>
             <div className={`${styles.corner} ${styles.tl}`} />
             <div className={`${styles.corner} ${styles.tr}`} />
@@ -145,30 +215,15 @@ export default function Hero() {
             <div className={`${styles.corner} ${styles.br}`} />
             <div className={styles.scanLine} />
 
-            {/* Default Matrix Canvas */}
-            <canvas
-              ref={canvasRef}
-              className={`${styles.canvas} ${isHovered ? styles.canvasHide : ""}`}
-            />
-
-            {/* Hover State: Cyberpunk Mecha Eye Image */}
-            <div className={`${styles.mechaWrap} ${isHovered ? styles.mechaShow : ""}`}>
-              <Image
-                src={getAssetPath("/hero_mecha_eye.jpg")}
-                alt="Mecha Eye Visualizer"
-                fill
-                style={{ objectFit: "cover" }}
-                className={styles.mechaImg}
-              />
-              <div className={styles.mechaOverlay} />
-            </div>
+            {/* Canvas Animation */}
+            <canvas ref={canvasRef} className={styles.canvas} />
           </div>
 
           {/* line 2 */}
           <div className={`${styles.line} reveal-blur delay-300`}>
-            <span className={styles.solid}>{isHovered ? "TAKE IT" : "NEXT-GEN"}</span>
+            <span className={styles.solid}>NEXT-GEN</span>
             <span className={styles.cycling} style={{ opacity: wordVisible ? 1 : 0, transform: wordVisible ? "translateY(0)" : "translateY(16px)" }}>
-              {activeWords[wordIdx % activeWords.length]}
+              {WORDS_DEFAULT[wordIdx % WORDS_DEFAULT.length]}
             </span>
           </div>
         </div>

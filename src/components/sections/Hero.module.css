@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 90px 1.5rem 4rem;
-  background: #040406;
+  padding: 100px 1.5rem 4rem;
+  background: var(--bg);
 }
 
 /* Background Synthwave Image & Spotlight Overlay */
@@ -15,15 +15,26 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.18;
+  opacity: 0;
   transform: scale(1);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 
-.heroHovered .synthwaveBgWrap {
-  opacity: 0.75;
+:global([data-theme="dark"]) .synthwaveBgWrap {
+  opacity: 0.22;
+}
+
+:global([data-theme="dark"]) .heroHovered .synthwaveBgWrap {
+  opacity: 0.65;
   transform: scale(1.04);
+}
+
+/* In Light Mode: DISABLE dark synthwave background completely on hover */
+:global([data-theme="light"]) .synthwaveBgWrap,
+:global([data-theme="light"]) .heroHovered .synthwaveBgWrap {
+  opacity: 0 !important;
+  display: none !important;
 }
 
 .synthwaveImg {
@@ -46,6 +57,7 @@
   padding: 0.5rem 0;
   overflow: hidden;
   z-index: 5;
+  background: var(--bg);
 }
 .top { top: 76px; }
 .bottom { bottom: 0; }
@@ -55,7 +67,7 @@
   border-radius: 50%;
   filter: blur(100px);
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.35;
   z-index: 1;
 }
 
@@ -65,7 +77,7 @@
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(110, 75, 200, 0.45) 0%, transparent 70%);
+  background: radial-gradient(ellipse, var(--glow-purple) 0%, transparent 70%);
   animation: bFloat 8s ease-in-out infinite;
 }
 
@@ -74,7 +86,7 @@
   height: 280px;
   top: 62%;
   right: 8%;
-  background: radial-gradient(ellipse, rgba(0, 100, 200, 0.25) 0%, transparent 70%);
+  background: radial-gradient(ellipse, var(--glow-blue) 0%, transparent 70%);
   animation: bFloat 11s ease-in-out infinite reverse;
 }
 
@@ -117,19 +129,18 @@
   font-size: clamp(1.6rem, 5.8vw, 6.5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  text-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
   width: 100%;
   margin: 0 auto;
 }
 
 .outline {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+  -webkit-text-stroke: 1.5px var(--white);
   color: transparent;
   transition: -webkit-text-stroke 0.4s;
 }
 
 .heroHovered .outline {
-  -webkit-text-stroke: 1.5px rgba(0, 212, 255, 0.8);
+  -webkit-text-stroke: 1.5px var(--accent);
 }
 
 .solid {
@@ -148,22 +159,26 @@
   text-align: center;
 }
 
-/* Scanner Frame */
+/* PERMANENT SCANNER FRAME DESIGN */
 .frame {
   position: relative;
   width: min(580px, 92vw);
   height: clamp(56px, 12vw, 88px);
   margin: 1.2rem auto;
-  background: rgba(10, 10, 18, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #08090e;
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 25px rgba(79, 70, 229, 0.25);
   overflow: hidden;
   transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
+  border-radius: 8px;
+  opacity: 1 !important;
+  display: block !important;
 }
 
 .frameActive {
-  border-color: rgba(255, 107, 107, 0.8);
-  box-shadow: 0 0 30px rgba(255, 107, 107, 0.3), inset 0 0 20px rgba(108, 99, 255, 0.2);
-  transform: scale(1.02);
+  border-color: #ff6b6b;
+  box-shadow: 0 0 35px rgba(255, 107, 107, 0.4), inset 0 0 20px rgba(108, 99, 255, 0.2);
+  transform: scale(1.03);
 }
 
 .corner {
@@ -209,49 +224,8 @@
 .canvas {
   width: 100%;
   height: 100%;
-  display: block;
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-.canvasHide {
-  opacity: 0;
-}
-
-.mechaWrap {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 3;
-}
-
-.mechaShow {
-  opacity: 1;
-}
-
-.mechaImg {
-  filter: contrast(1.2) brightness(1.1);
-  transform: scale(1.1);
-  animation: mechaPulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes mechaPulse {
-  0% { transform: scale(1.05); }
-  100% { transform: scale(1.12); }
-}
-
-.mechaOverlay {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 2px,
-    rgba(255, 107, 107, 0.15) 2px,
-    rgba(255, 107, 107, 0.15) 4px
-  );
-  pointer-events: none;
+  display: block !important;
+  opacity: 1 !important;
 }
 
 /* Social Buttons */
@@ -269,11 +243,14 @@
   width: 44px;
   height: 44px;
   border: 1px solid var(--border);
+  background: var(--card-bg);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: border-color 0.3s, background 0.3s, transform 0.3s;
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .socialCircle :global(svg) {
@@ -282,8 +259,8 @@
 }
 
 .socialCircle:hover {
-  border-color: var(--white);
-  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent);
+  background: rgba(79, 70, 229, 0.08);
   transform: scale(1.12);
 }
 
@@ -299,9 +276,6 @@
     text-align: center;
     gap: 0.2rem;
     font-size: clamp(1.4rem, 6.5vw, 2.3rem);
-  }
-  .outline {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
   }
   .socials {
     position: relative;

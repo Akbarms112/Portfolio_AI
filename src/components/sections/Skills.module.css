@@ -26,8 +26,9 @@
 
 .subtitle {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--white-60);
   margin-top: 0.8rem;
+  font-weight: 500;
 }
 
 .grid {
@@ -60,9 +61,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--border);
-  background: rgba(12, 12, 18, 0.6);
-  border-radius: 8px;
+  background: var(--card-bg);
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .statItem {
@@ -80,6 +82,7 @@
   font-size: 2.8rem;
   font-weight: 700;
   line-height: 1;
+  color: var(--white);
 }
 
 .statSuffix {
@@ -90,7 +93,7 @@
   font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
   margin-top: 0.5rem;
   font-weight: 600;
 }

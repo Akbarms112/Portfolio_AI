@@ -47,7 +47,7 @@ export default function Works() {
 
       {/* Header */}
       <div className={`${styles.header} reveal-up delay-100`}>
-        <h2 className="section-title">SELECTED WORKS</h2>
+        <h2 className={styles.sectionTitle}>PROJECTS</h2>
         <p className={styles.subtitle}>
           A curated selection of production Generative AI, RAG architectures, and Voice AI platforms.
         </p>

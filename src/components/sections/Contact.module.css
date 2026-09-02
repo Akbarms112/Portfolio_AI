@@ -9,15 +9,17 @@
   border-bottom: 1px solid var(--border);
   padding: 0.8rem 0;
   overflow: hidden;
+  background: var(--bg);
 }
 
 .serviceTrack {
   font-family: var(--font-serif);
   font-size: 1rem;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.18);
+  color: var(--white-30);
   gap: 2rem;
   animation-duration: 18s;
+  font-weight: 600;
 }
 
 .brand {
@@ -32,7 +34,7 @@
   font-weight: 700;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  -webkit-text-stroke: 1.5px var(--white);
   display: inline-block;
   animation: letterFloat 4s ease-in-out infinite;
   animation-delay: calc(var(--i) * 0.15s);
@@ -62,12 +64,14 @@
   font-style: italic;
   margin-bottom: 0.5rem;
   line-height: 1.4;
+  color: var(--white);
 }
 
 .sub {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
   margin-bottom: 2.5rem;
+  font-weight: 500;
 }
 
 .form {
@@ -120,7 +124,7 @@
 }
 
 .submit:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.88);
+  opacity: 0.88;
   transform: translateY(-2px);
 }
 
@@ -146,12 +150,14 @@
   font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 0.3s;
+  color: var(--white);
+  transition: color 0.3s, border-color 0.3s;
   padding: 0.6rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: 100px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .channel :global(svg) {
@@ -161,9 +167,8 @@
 }
 
 .channel:hover {
-  color: var(--white);
-  border-color: var(--accent3);
-  background: rgba(0, 212, 255, 0.1);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 @media (max-width: 640px) {

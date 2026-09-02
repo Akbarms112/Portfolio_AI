@@ -9,8 +9,8 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.25;
-  background-image: radial-gradient(circle 2px at 30px 30px, rgba(255, 255, 255, 0.4) 100%, transparent 0%);
+  opacity: 0.15;
+  background-image: radial-gradient(circle 2px at 30px 30px, var(--white-60) 100%, transparent 0%);
   background-size: 60px 60px;
 }
 
@@ -27,20 +27,22 @@
   font-size: 0.65rem;
   letter-spacing: 0.18em;
   color: var(--accent3);
-  background: rgba(0, 212, 255, 0.08);
-  border: 1px solid rgba(0, 212, 255, 0.25);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   padding: 0.45rem 1.2rem;
   border-radius: 100px;
   margin-bottom: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .subtitle {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--white-60);
   max-width: 580px;
   margin: 1rem auto 0;
   line-height: 1.7;
+  font-weight: 500;
 }
 
 /* Timeline Container */
@@ -66,7 +68,7 @@
   );
   transform: translateX(-50%);
   z-index: 1;
-  box-shadow: 0 0 15px rgba(108, 99, 255, 0.5);
+  box-shadow: 0 0 15px var(--glow-purple);
 }
 
 .itemsList {
@@ -100,7 +102,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--bg2);
+  background: var(--card-bg);
   border: 3px solid var(--accent3);
   transform: translate(-50%, -50%);
   z-index: 4;
@@ -114,7 +116,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--white);
   animation: pulseNode 2s ease-in-out infinite alternate;
 }
 
@@ -128,23 +130,22 @@
   position: relative;
   width: calc(50% - 3.5rem);
   padding: 2.2rem 2rem;
-  background: rgba(16, 16, 26, 0.85);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
   transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 25px rgba(108, 99, 255, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12), 0 0 25px var(--glow-purple);
 }
 
 .currentCard {
-  border-color: rgba(74, 222, 128, 0.4);
-  box-shadow: 0 0 30px rgba(74, 222, 128, 0.15);
+  border-color: #10b981;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
 }
 
 /* Current Green Badge */
@@ -156,18 +157,18 @@
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: #060608;
-  background: #4ade80;
+  color: #ffffff;
+  background: #10b981;
   padding: 0.3rem 0.85rem;
   border-radius: 100px;
-  box-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
 }
 
 .roleTitle {
   font-family: var(--font-serif);
   font-size: 1.65rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--white);
   margin-bottom: 0.6rem;
   line-height: 1.2;
 }
@@ -187,15 +188,17 @@
 }
 
 .periodText {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--white-30);
+  font-weight: 600;
 }
 
 .tagline {
   font-size: 0.92rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--white-60);
   margin-bottom: 1.5rem;
   font-style: italic;
+  font-weight: 500;
 }
 
 /* Bullet List with Checkmarks */
@@ -212,7 +215,8 @@
   gap: 0.75rem;
   font-size: 0.88rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--white-60);
+  font-weight: 500;
 }
 
 .checkIcon {
@@ -235,18 +239,19 @@
   font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  background: var(--bg);
+  border: 1px solid var(--border);
   padding: 0.3rem 0.75rem;
   border-radius: 100px;
   transition: background 0.3s, border-color 0.3s, color 0.3s;
+  font-weight: 600;
 }
 
 .skillPill:hover {
   background: rgba(0, 212, 255, 0.12);
   border-color: var(--accent3);
-  color: #ffffff;
+  color: var(--accent3);
 }
 
 @media (max-width: 860px) {
